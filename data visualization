@@ -1,0 +1,51 @@
+# Import necessary libraries
+import matplotlib.pyplot as plt
+import pandas as pd
+#crating data
+data = {
+    'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    'Electricity': [2500, 2600, 3050, 3080, 2520, 1570],
+    'Groceries': [3000, 2200, 2800, 3000, 2150, 3250],
+    'Traveling': [1800, 1500, 1400, 1900, 1690, 1900],
+    'Rent': [7000, 7000, 7000, 7000, 7000, 7000],
+    'WiFi Bill': [800, 800, 800, 800, 800, 800],
+    'Dish TV Recharge': [500, 500, 500, 500, 500, 500]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+  plt.figure(figsize=(12, 5))
+# Bar chart
+plt.bar(df['Month'], df['Electricity'], label='Electricity')
+plt.bar(df['Month'], df['Groceries'], bottom=df['Electricity'], label='Groceries')
+plt.bar(df['Month'], df['Traveling'], bottom=df['Electricity'] + df['Groceries'], label='Traveling')
+plt.bar(df['Month'], df['Rent'], bottom=df['Electricity'] + df['Groceries'] + df['Traveling'], label='Rent')
+plt.bar(df['Month'], df['WiFi Bill'], bottom=df['Electricity'] + df['Groceries'] + df['Traveling'] + df['Rent'], label='WiFi Bill')
+plt.bar(df['Month'], df['Dish TV Recharge'], bottom=df['Electricity'] + df['Groceries'] + df['Traveling'] + df['Rent'] + df['WiFi Bill'], label='Dish TV Recharge')
+
+plt.title('Monthly Home Expenses')
+plt.xlabel('Month')
+plt.ylabel('Expense (INR)')
+plt.xticks(rotation=45)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+# Line chart
+plt.subplot(1,1,1)
+plt.plot(df['Month'], df['Electricity'], marker='*', label='Electricity')
+plt.plot(df['Month'], df['Groceries'], marker='*', label='Groceries')
+plt.plot(df['Month'], df['Traveling'], marker='*', label='Traveling')
+plt.plot(df['Month'], df['Rent'], marker='*', label='Rent')
+plt.plot(df['Month'], df['WiFi Bill'], marker='*', label='WiFi Bill')
+plt.plot(df['Month'], df['Dish TV Recharge'], marker='*', label='Dish TV Recharge')
+plt.title('Monthly Home Expenses')
+plt.xlabel('Month')   # X Label
+plt.ylabel('Expense (INR)')  # Y Label
+plt.xticks(rotation=45)
+plt.legend() #using ledend
+
+plt.tight_layout()
+plt.show()
+
+
